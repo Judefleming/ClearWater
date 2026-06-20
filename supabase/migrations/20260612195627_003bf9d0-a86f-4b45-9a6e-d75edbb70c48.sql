@@ -1,0 +1,1 @@
+CREATE POLICY "access_codes_no_client_access" ON public.access_codes FOR ALL TO authenticated USING (false) WITH CHECK (false);
