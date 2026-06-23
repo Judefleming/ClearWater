@@ -37,13 +37,25 @@ h2.big{font-size:clamp(1.75rem,3.6vw,2.6rem);margin-bottom:14px}
 /* nav */
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-in{max-width:var(--maxw);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:26px}
-.nav-in .logo{height:42px}
+.nav-in>a:first-child{flex:0 0 auto;display:flex;align-items:center}
+.nav-in .logo{height:42px;width:auto;display:block}
 .nav-links{display:flex;gap:24px;margin-left:6px}
 .nav-links a{font-size:14.5px;color:var(--muted);font-weight:500}
 .nav-links a:hover{color:var(--navy)}
 .nav-cta{margin-left:auto;display:flex;align-items:center;gap:12px}
 .nav-phone{font-family:'Poppins',sans-serif;font-weight:600;color:var(--navy);font-size:15px}
 @media(max-width:1040px){.nav-links{display:none}}
+@media(max-width:640px){
+ .nav-in{gap:8px;padding:10px 14px}
+ .nav-in .logo{height:30px}
+ .nav-phone{display:none}
+ .nav-cta{gap:7px}
+ .nav-cta .btn-sm{padding:8px 12px;font-size:12.5px}
+}
+@media(max-width:380px){
+ .nav-in .logo{height:27px}
+ .nav-cta .btn-sm{padding:7px 10px;font-size:11.5px}
+}
 
 /* hero */
 .hero{background:linear-gradient(170deg,#f3f9fc 0%,#fff 60%);padding:60px 0 72px;position:relative;overflow:hidden}
@@ -284,7 +296,7 @@ footer ul a:hover{color:var(--teal-x)}
   </div>
   <div class="nav-cta">
    <a href="tel:017267941" class="nav-phone">(1) 726 7941</a>
-   <a href="https://clear-water-nine.vercel.app/portal" class="btn btn-ghost btn-sm">Customer Portal</a>
+   <a href="https://clear-water-nine.vercel.app/portal" class="btn btn-ghost btn-sm nav-portal">Customer Portal</a>
    <a href="#contact" class="btn btn-primary btn-sm">Get a Quote</a>
   </div>
  </div>
