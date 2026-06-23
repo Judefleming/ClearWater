@@ -63,9 +63,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 
 /* before/after slider */
 .ba{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 26px 60px rgba(0,51,102,.18);aspect-ratio:4/3;background:#dfe7ee;user-select:none}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ba .after-wrap{position:absolute;inset:0;width:50%;overflow:hidden;border-right:3px solid #fff}
-.ba .after-wrap img{width:100vw;max-width:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba .ba-top{clip-path:inset(0 50% 0 0)}
 .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:44px;transform:translateX(-50%);cursor:ew-resize;display:flex;align-items:center;justify-content:center;z-index:3}
 .ba .handle::before{content:"";position:absolute;top:0;bottom:0;width:3px;background:#fff;box-shadow:0 0 8px rgba(0,0,0,.3)}
 .ba .knob{width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3);display:grid;place-items:center;color:var(--navy)}
@@ -314,8 +313,8 @@ footer ul a:hover{color:var(--teal-x)}
   </div>
   <div class="reveal">
    <div class="ba" id="ba">
-    <img src="https://clear-water-nine.vercel.app/assets/before-limescale-DiDa5cmu.jpg" alt="Before — limescale damage" onerror="this.style.background='#cdd8e2';this.removeAttribute('src')"/>
-    <div class="after-wrap" id="baAfter"><img src="https://clear-water-nine.vercel.app/assets/after-clean-yHdygtGt.jpg" alt="After — soft water" onerror="this.style.background='#e8f3f3';this.removeAttribute('src')"/></div>
+    <img class="ba-base" src="https://clear-water-nine.vercel.app/assets/after-clean-yHdygtGt.jpg" alt="After — soft, clean water" onerror="this.style.background='#e8f3f3';this.removeAttribute('src')"/>
+    <img class="ba-top" id="baTop" src="https://clear-water-nine.vercel.app/assets/before-limescale-DiDa5cmu.jpg" alt="Before — limescale damage" onerror="this.style.background='#cdd8e2';this.removeAttribute('src')"/>
     <span class="lbl b">Before</span>
     <span class="lbl a">After</span>
     <div class="handle" id="baHandle"><div class="knob"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div></div>
@@ -459,6 +458,17 @@ footer ul a:hover{color:var(--teal-x)}
     <div class="ctrl"><label>Number of bathrooms <b id="vBath">2</b></label><input type="range" id="bath" min="1" max="5" value="2"></div>
     <div class="ctrl"><label>Boiler age (years) <b id="vBoiler">7</b></label><input type="range" id="boiler" min="0" max="20" value="7"><div class="hint">HHIC: 1.6mm scale = 12% efficiency loss; 5mm = 24%+.</div></div>
     <div class="ctrl"><label>Water hardness (mg/L) <b id="vHard">300</b></label><input type="range" id="hard" min="150" max="350" value="300"><div class="hint">Dublin &amp; most of Leinster: 280–320 mg/L (very hard).</div></div>
+    <div class="ctrl"><label>Appliances in your home</label>
+     <div class="apps" id="apps">
+      <span class="app on">Dishwasher</span>
+      <span class="app on">Washing Machine</span>
+      <span class="app">Electric Shower</span>
+      <span class="app on">Kettle</span>
+      <span class="app">Coffee Machine</span>
+      <span class="app">Steam Iron</span>
+      <span class="app">Toilet cisterns</span>
+     </div>
+    </div>
     <div class="ctrl"><label>Cleaning product spend</label>
      <div class="apps" id="clean">
       <span class="app" data-c="180">Under €150</span>
@@ -704,41 +714,42 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   useEffect(() => {
-    try {
 
 /* reveal */
-(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();
+try{(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();}catch(e){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});}
 
-/* before/after slider */
-(function(){
- var ba=document.getElementById('ba'),after=document.getElementById('baAfter'),handle=document.getElementById('baHandle'),drag=false;
- function set(x){var r=ba.getBoundingClientRect();var p=Math.max(0,Math.min(1,(x-r.left)/r.width));after.style.width=(p*100)+'%';handle.style.left=(p*100)+'%';}
+/* before/after slider (clip-path) */
+try{(function(){
+ var ba=document.getElementById('ba'),top=document.getElementById('baTop'),handle=document.getElementById('baHandle'),drag=false;
+ if(!ba||!top||!handle)return;
+ function set(x){var r=ba.getBoundingClientRect();var p=Math.max(0,Math.min(1,(x-r.left)/r.width));top.style.clipPath='inset(0 '+((1-p)*100)+'% 0 0)';handle.style.left=(p*100)+'%';}
  function down(){drag=true;} function up(){drag=false;}
  function move(e){if(!drag)return;var x=e.touches?e.touches[0].clientX:e.clientX;set(x);}
  handle.addEventListener('mousedown',down);window.addEventListener('mouseup',up);window.addEventListener('mousemove',move);
  handle.addEventListener('touchstart',down,{passive:true});window.addEventListener('touchend',up);window.addEventListener('touchmove',move,{passive:true});
  ba.addEventListener('click',function(e){set(e.clientX);});
-})();
+})();}catch(e){}
 
-/* savings calculator */
-(function(){
+/* savings calculator (with appliances) */
+try{(function(){
  var people=document.getElementById('people'),bath=document.getElementById('bath'),boiler=document.getElementById('boiler'),hard=document.getElementById('hard');
- var clean=document.getElementById('clean'),cleanVal=297;
+ var clean=document.getElementById('clean'),apps=document.getElementById('apps'),cleanVal=297;
+ if(!people)return;
  function euro(n){return '€'+Math.round(n).toLocaleString();}
+ function appCount(){return apps?apps.querySelectorAll('.app.on').length:3;}
  function calc(){
-  var p=+people.value,b=+bath.value,bo=+boiler.value,h=+hard.value;
+  var p=+people.value,b=+bath.value,bo=+boiler.value,h=+hard.value,ac=appCount();
   document.getElementById('vPeople').textContent=p;document.getElementById('vBath').textContent=b;
   document.getElementById('vBoiler').textContent=bo;document.getElementById('vHard').textContent=h;
   var hf=h/300, pf=p/3;
   var cBoiler=320*hf*(1+Math.max(-0.3,Math.min(0.6,(bo-5)*0.04)));
-  var cApp=480*hf*(0.6+pf*0.5)*(0.7+b*0.1);
+  var cApp=120*ac*hf*(0.7+0.3*pf);
   var cClean=cleanVal*(0.7+pf*0.3);
   var cPlumb=150*hf;
   var cEnergy=95*hf*pf;
-  var total=cBoiler+cApp+cClean+cPlumb+cEnergy;
-  total=Math.max(200,Math.min(1600,total));
-  // scale components to clamped total
-  var raw=cBoiler+cApp+cClean+cPlumb+cEnergy, k=total/raw;
+  var raw=cBoiler+cApp+cClean+cPlumb+cEnergy;
+  var total=Math.max(200,Math.min(1600,raw));
+  var k=raw>0?total/raw:1;
   document.getElementById('bBoiler').textContent=euro(cBoiler*k);
   document.getElementById('bApp').textContent=euro(cApp*k);
   document.getElementById('bClean').textContent=euro(cClean*k);
@@ -749,12 +760,13 @@ function Home() {
   document.getElementById('tenyr').textContent=euro(total*10);
  }
  [people,bath,boiler,hard].forEach(function(s){s.addEventListener('input',calc);});
- clean.addEventListener('click',function(e){if(!e.target.dataset.c)return;clean.querySelectorAll('.app').forEach(function(a){a.classList.remove('on');});e.target.classList.add('on');cleanVal=+e.target.dataset.c;calc();});
+ if(clean)clean.addEventListener('click',function(e){if(!e.target.dataset.c)return;clean.querySelectorAll('.app').forEach(function(a){a.classList.remove('on');});e.target.classList.add('on');cleanVal=+e.target.dataset.c;calc();});
+ if(apps)apps.addEventListener('click',function(e){if(!e.target.classList.contains('app'))return;e.target.classList.toggle('on');calc();});
  calc();
-})();
+})();}catch(e){}
 
 /* quote form -> mailto */
-(function(){
+try{(function(){
  var btn=document.getElementById('qSend');if(!btn)return;
  btn.addEventListener('click',function(){
   var name=document.getElementById('qName').value||'(no name)';
@@ -764,13 +776,14 @@ function Home() {
   var body=encodeURIComponent('Name: '+name+'\nContact: '+contact+'\nPackage: '+pkg+'\nTimeframe: '+when+'\n\nSent from clearwaterireland.ie');
   window.location.href='mailto:clearwaterireland@gmail.com?subject='+subject+'&body='+body;
  });
-})();
+})();}catch(e){}
 
 /* chat widget */
-(function(){
+try{(function(){
  var launch=document.getElementById('cw-launch'),panel=document.getElementById('cw-panel'),body=document.getElementById('cwBody'),
      chips=document.getElementById('cwChips'),input=document.getElementById('cwInput'),send=document.getElementById('cwSend'),
-     x=panel.querySelector('.cw-x'),started=false;
+     x=panel?panel.querySelector('.cw-x'):null,started=false;
+ if(!launch||!panel)return;
  var KB=[
   {k:['which package','recommend','need','suit','best'],a:"Most homes go for Complete (\u20ac1,895) \u2014 it adds salt management, priority support and a 10-year parts warranty. Essential (\u20ac1,450) covers whole-home limescale protection; Premium (\u20ac2,200) adds a filtered drinking tap. Call (1) 726 7941 and we'll match you in 60 seconds."},
   {k:['cost','price','how much','pricing'],a:"Fixed prices, fully installed: Essential \u20ac1,450 \u00b7 Complete \u20ac1,895 \u00b7 Premium \u20ac2,200. No hidden costs, confirmed in writing."},
@@ -789,12 +802,11 @@ function Home() {
  function rc(){chips.innerHTML='';CH.forEach(function(c){var b=document.createElement('button');b.className='cw-chip';b.textContent=c[0];b.onclick=function(){resp(c[1]);};chips.appendChild(b);});}
  function open(){panel.classList.add('open');launch.style.display='none';if(!started){started=true;add("Hi there \u2014 I'm the ClearWater assistant. I can help with packages, pricing, installation, warranties or salt supply. What would you like to know?",'b');rc();}setTimeout(function(){input.focus();},50);}
  function close(){panel.classList.remove('open');launch.style.display='grid';}
- launch.onclick=open;x.onclick=close;
- send.onclick=function(){var v=input.value.trim();if(v)resp(v);};
- input.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=input.value.trim();if(v)resp(v);}});
-})();
+ launch.onclick=open;if(x)x.onclick=close;
+ if(send)send.onclick=function(){var v=input.value.trim();if(v)resp(v);};
+ if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=input.value.trim();if(v)resp(v);}});
+})();}catch(e){}
 
-    } catch (e) { /* no-op */ }
   }, []);
   return <div className="cw-site js" dangerouslySetInnerHTML={{ __html: PAGE_HTML }} />;
 }
