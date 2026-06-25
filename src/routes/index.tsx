@@ -75,7 +75,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 
 /* before/after slider */
 .ba{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 26px 60px rgba(0,51,102,.18);aspect-ratio:4/3;background:#dfe7ee;user-select:none}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba img,.ba svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .ba .ba-top{clip-path:inset(0 50% 0 0)}
 .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:44px;transform:translateX(-50%);cursor:ew-resize;display:flex;align-items:center;justify-content:center;z-index:3}
 .ba .handle::before{content:"";position:absolute;top:0;bottom:0;width:3px;background:#fff;box-shadow:0 0 8px rgba(0,0,0,.3)}
@@ -108,7 +108,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-f
 .cost .src{font-size:11px;color:var(--faint);margin-top:8px}
 .tap-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
 .tap{border-radius:14px;overflow:hidden;border:1px solid var(--line);position:relative}
-.tap img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.tap img,.tap svg{aspect-ratio:4/3;object-fit:cover;width:100%;display:block}
 .tap .cap{padding:14px 16px;background:#fff}
 .tap .cap b{font-family:'Poppins',sans-serif;font-size:14px;color:var(--navy-d)}
 .tap .cap.bad b{color:#c0392b}
@@ -285,7 +285,7 @@ footer ul a:hover{color:var(--teal-x)}
 <!-- NAV -->
 <nav>
  <div class="nav-in">
-  <a href="#home"><img class="logo" src="https://clear-water-nine.vercel.app/assets/clearwater-logo-C_XgsMZZ.png" alt="ClearWater Ireland"/></a>
+  <a href="#home"><svg class="logo" viewBox="0 0 232 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClearWater Ireland"><defs><linearGradient id="lgd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1aa6a8"/><stop offset="1" stop-color="#007A7C"/></linearGradient></defs><path d="M22 5 C22 5 35 20 35 30 a13 13 0 0 1-26 0 C9 20 22 5 22 5 Z" fill="url(#lgd)"/><path d="M17 30 a8 8 0 0 0 8 7" fill="none" stroke="#bdeef0" stroke-width="2.4" stroke-linecap="round" opacity=".9"/><text x="48" y="27" font-family="Poppins,Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="-.3"><tspan fill="#003366">Clear</tspan><tspan fill="#007A7C">Water</tspan></text><text x="49" y="40" font-family="Poppins,Inter,Arial,sans-serif" font-size="8.5" font-weight="600" letter-spacing="4.2" fill="#5a6b7b">IRELAND</text></svg></a>
   <div class="nav-links">
    <a href="#why">Why Us</a>
    <a href="#packages">Packages</a>
@@ -325,8 +325,8 @@ footer ul a:hover{color:var(--teal-x)}
   </div>
   <div class="reveal">
    <div class="ba" id="ba">
-    <img class="ba-base" src="https://clear-water-nine.vercel.app/assets/after-clean-yHdygtGt.jpg" alt="After — soft, clean water" onerror="this.style.background='#e8f3f3';this.removeAttribute('src')"/>
-    <img class="ba-top" id="baTop" src="https://clear-water-nine.vercel.app/assets/before-limescale-DiDa5cmu.jpg" alt="Before — limescale damage" onerror="this.style.background='#cdd8e2';this.removeAttribute('src')"/>
+    <svg class="ba-base" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgsa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf7f7"/><stop offset="1" stop-color="#d3ebec"/></linearGradient><linearGradient id="chsa" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fb4c2"/><stop offset=".5" stop-color="#eef4f7"/><stop offset="1" stop-color="#8fa6b5"/></linearGradient><linearGradient id="wasa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfeef1"/><stop offset="1" stop-color="#7fcdd4"/></linearGradient></defs><rect width="400" height="300" fill="url(#bgsa)"/><rect y="232" width="400" height="68" fill="#cfe6e7"/><ellipse cx="205" cy="238" rx="122" ry="15" fill="#bcdcdd"/><path d="M150 214 V120 Q150 82 196 82 Q236 82 236 116 V132" stroke="url(#chsa)" stroke-width="15" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="214" rx="21" ry="7" fill="url(#chsa)"/><rect x="231.5" y="130" width="9" height="94" rx="4.5" fill="url(#wasa)"/><ellipse cx="236" cy="228" rx="13" ry="4" fill="#7fcdd4" opacity=".55"/><path d="M286 178 h46 l-6 58 h-34 z" fill="#bfe6ea" opacity=".9"/><path d="M288 192 h42 l-2 14 h-38 z" fill="#dbf2f4"/><rect x="283" y="174" width="52" height="6" rx="3" fill="#eef8f8"/><path d="M300 89 L302.1 93.9 L307 96 L302.1 98.1 L300 103 L297.9 98.1 L293 96 L297.9 93.9 Z" fill="#ffffff"/><path d="M258 145 L259.5 148.5 L263 150 L259.5 151.5 L258 155 L256.5 151.5 L253 150 L256.5 148.5 Z" fill="#ffffff"/><path d="M326 146 L327.2 148.8 L330 150 L327.2 151.2 L326 154 L324.8 151.2 L322 150 L324.8 148.8 Z" fill="#ffffff"/></svg>
+    <svg class="ba-top" id="baTop" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgsb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ece7df"/><stop offset="1" stop-color="#dad2c4"/></linearGradient><linearGradient id="chsb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b3b7bb"/><stop offset=".5" stop-color="#dfe2e4"/><stop offset="1" stop-color="#a4a8ad"/></linearGradient><linearGradient id="wasb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3d8d2"/><stop offset="1" stop-color="#aeb6ad"/></linearGradient></defs><rect width="400" height="300" fill="url(#bgsb)"/><rect y="232" width="400" height="68" fill="#ded7ca"/><ellipse cx="205" cy="238" rx="122" ry="15" fill="#cdc5b4"/><path d="M150 214 V120 Q150 82 196 82 Q236 82 236 116 V132" stroke="url(#chsb)" stroke-width="15" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="214" rx="21" ry="7" fill="url(#chsb)"/><rect x="232" y="130" width="8" height="40" rx="4" fill="url(#wasb)" opacity=".8"/><rect x="231" y="176" width="9" height="26" rx="4" fill="url(#wasb)" opacity=".7"/><rect x="233" y="206" width="7" height="16" rx="3" fill="url(#wasb)" opacity=".6"/><ellipse cx="236" cy="228" rx="11" ry="4" fill="#aeb6ad" opacity=".5"/><path d="M286 178 h46 l-6 58 h-34 z" fill="#cfd3cc" opacity=".9"/><path d="M288 192 h42 l-2 14 h-38 z" fill="#e2e4dc"/><rect x="283" y="174" width="52" height="6" rx="3" fill="#eceae0"/><ellipse cx="236" cy="128" rx="9" ry="5" fill="#f3efe5" opacity=".85"/><ellipse cx="150" cy="210" rx="15" ry="5" fill="#f3efe5" opacity=".85"/><ellipse cx="143" cy="150" rx="6" ry="4" fill="#f3efe5" opacity=".85"/><ellipse cx="232" cy="196" rx="7" ry="3" fill="#f3efe5" opacity=".85"/><ellipse cx="310" cy="182" rx="10" ry="3" fill="#f3efe5" opacity=".85"/><ellipse cx="300" cy="234" rx="12" ry="4" fill="#f3efe5" opacity=".85"/><circle cx="228" cy="150" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="244" cy="165" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="156" cy="190" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="318" cy="196" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="296" cy="150" r="2.1" fill="#fffdf6" opacity=".8"/><rect x="289" y="205" width="38" height="4" rx="2" fill="#efe9db" opacity=".9"/></svg>
     <span class="lbl b">Before</span>
     <span class="lbl a">After</span>
     <div class="handle" id="baHandle"><div class="knob"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div></div>
@@ -383,8 +383,8 @@ footer ul a:hover{color:var(--teal-x)}
    <div class="cost"><div class="big">€1,000+</div><h4>Pipe &amp; fixture damage</h4><p>Scale builds inside pipes, leading to costly repairs.</p><div class="src">Source: Irish plumbing costs</div></div>
   </div>
   <div class="tap-pair reveal">
-   <div class="tap"><img src="https://clear-water-nine.vercel.app/assets/before-tap-BfAyg5vV.jpg" alt="Tap with limescale" onerror="this.style.background='#cdd8e2';this.style.aspectRatio='4/3';this.removeAttribute('src')"/><div class="cap bad"><b>Before — hard water</b><span>Limescale crust on taps, shower-heads &amp; appliances</span></div></div>
-   <div class="tap"><img src="https://clear-water-nine.vercel.app/assets/after-tap-CyeF4nHN.jpg" alt="Clean tap after softening" onerror="this.style.background='#e8f3f3';this.style.aspectRatio='4/3';this.removeAttribute('src')"/><div class="cap"><b>After — softened water</b><span>Spotless fixtures, longer appliance life &amp; better skin</span></div></div>
+   <div class="tap"><svg class="tapsvg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgtb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ece7df"/><stop offset="1" stop-color="#dad2c4"/></linearGradient><linearGradient id="chtb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b3b7bb"/><stop offset=".5" stop-color="#dfe2e4"/><stop offset="1" stop-color="#a4a8ad"/></linearGradient><linearGradient id="watb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3d8d2"/><stop offset="1" stop-color="#aeb6ad"/></linearGradient></defs><rect width="400" height="300" fill="url(#bgtb)"/><rect y="232" width="400" height="68" fill="#ded7ca"/><ellipse cx="205" cy="238" rx="122" ry="15" fill="#cdc5b4"/><path d="M150 214 V120 Q150 82 196 82 Q236 82 236 116 V132" stroke="url(#chtb)" stroke-width="15" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="214" rx="21" ry="7" fill="url(#chtb)"/><rect x="232" y="130" width="8" height="40" rx="4" fill="url(#watb)" opacity=".8"/><rect x="231" y="176" width="9" height="26" rx="4" fill="url(#watb)" opacity=".7"/><rect x="233" y="206" width="7" height="16" rx="3" fill="url(#watb)" opacity=".6"/><ellipse cx="236" cy="228" rx="11" ry="4" fill="#aeb6ad" opacity=".5"/><path d="M286 178 h46 l-6 58 h-34 z" fill="#cfd3cc" opacity=".9"/><path d="M288 192 h42 l-2 14 h-38 z" fill="#e2e4dc"/><rect x="283" y="174" width="52" height="6" rx="3" fill="#eceae0"/><ellipse cx="236" cy="128" rx="9" ry="5" fill="#f3efe5" opacity=".85"/><ellipse cx="150" cy="210" rx="15" ry="5" fill="#f3efe5" opacity=".85"/><ellipse cx="143" cy="150" rx="6" ry="4" fill="#f3efe5" opacity=".85"/><ellipse cx="232" cy="196" rx="7" ry="3" fill="#f3efe5" opacity=".85"/><ellipse cx="310" cy="182" rx="10" ry="3" fill="#f3efe5" opacity=".85"/><ellipse cx="300" cy="234" rx="12" ry="4" fill="#f3efe5" opacity=".85"/><circle cx="228" cy="150" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="244" cy="165" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="156" cy="190" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="318" cy="196" r="2.1" fill="#fffdf6" opacity=".8"/><circle cx="296" cy="150" r="2.1" fill="#fffdf6" opacity=".8"/><rect x="289" y="205" width="38" height="4" rx="2" fill="#efe9db" opacity=".9"/></svg><div class="cap bad"><b>Before — hard water</b><span>Limescale crust on taps, shower-heads &amp; appliances</span></div></div>
+   <div class="tap"><svg class="tapsvg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bgta" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf7f7"/><stop offset="1" stop-color="#d3ebec"/></linearGradient><linearGradient id="chta" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fb4c2"/><stop offset=".5" stop-color="#eef4f7"/><stop offset="1" stop-color="#8fa6b5"/></linearGradient><linearGradient id="wata" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfeef1"/><stop offset="1" stop-color="#7fcdd4"/></linearGradient></defs><rect width="400" height="300" fill="url(#bgta)"/><rect y="232" width="400" height="68" fill="#cfe6e7"/><ellipse cx="205" cy="238" rx="122" ry="15" fill="#bcdcdd"/><path d="M150 214 V120 Q150 82 196 82 Q236 82 236 116 V132" stroke="url(#chta)" stroke-width="15" fill="none" stroke-linecap="round"/><ellipse cx="150" cy="214" rx="21" ry="7" fill="url(#chta)"/><rect x="231.5" y="130" width="9" height="94" rx="4.5" fill="url(#wata)"/><ellipse cx="236" cy="228" rx="13" ry="4" fill="#7fcdd4" opacity=".55"/><path d="M286 178 h46 l-6 58 h-34 z" fill="#bfe6ea" opacity=".9"/><path d="M288 192 h42 l-2 14 h-38 z" fill="#dbf2f4"/><rect x="283" y="174" width="52" height="6" rx="3" fill="#eef8f8"/><path d="M300 89 L302.1 93.9 L307 96 L302.1 98.1 L300 103 L297.9 98.1 L293 96 L297.9 93.9 Z" fill="#ffffff"/><path d="M258 145 L259.5 148.5 L263 150 L259.5 151.5 L258 155 L256.5 151.5 L253 150 L256.5 148.5 Z" fill="#ffffff"/><path d="M326 146 L327.2 148.8 L330 150 L327.2 151.2 L326 154 L324.8 151.2 L322 150 L324.8 148.8 Z" fill="#ffffff"/></svg><div class="cap"><b>After — softened water</b><span>Spotless fixtures, longer appliance life &amp; better skin</span></div></div>
   </div>
  </div>
 </section>
@@ -637,7 +637,9 @@ footer ul a:hover{color:var(--teal-x)}
    <div class="qform reveal">
     <h3>Get a free quote</h3>
     <div class="field"><label>Your name</label><input type="text" id="qName" placeholder="Full name"></div>
-    <div class="field"><label>Phone or email</label><input type="text" id="qContact" placeholder="So we can get back to you"></div>
+    <div class="field"><label>Email</label><input type="email" id="qEmail" placeholder="So we can confirm your enquiry"></div>
+    <div class="field"><label>Phone</label><input type="tel" id="qPhone" placeholder="Best number to reach you"></div>
+    <div class="field" style="position:absolute;left:-9999px" aria-hidden="true"><label>Company</label><input type="text" id="qCompany" tabindex="-1" autocomplete="off"></div>
     <div class="field"><label>Which package?</label>
      <select id="qPkg">
       <option>Not sure — recommend one</option>
@@ -650,6 +652,7 @@ footer ul a:hover{color:var(--teal-x)}
      <select id="qWhen"><option>This week</option><option>Within 2 weeks</option><option>Just researching</option></select>
     </div>
     <button class="btn btn-primary" id="qSend">Send My Enquiry →</button>
+    <div id="qMsg" style="display:none;font-size:13.5px;margin-top:12px;padding:11px 14px;border-radius:10px"></div>
     <div class="fine"><span>✓ No obligation</span><span>✓ Price in writing</span><span>✓ Document pack included</span></div>
    </div>
   </div>
@@ -674,7 +677,7 @@ footer ul a:hover{color:var(--teal-x)}
  <div class="wrap">
   <div class="foot-grid">
    <div>
-    <img class="logo" src="https://clear-water-nine.vercel.app/assets/clearwater-logo-C_XgsMZZ.png" alt="ClearWater Ireland"/>
+    <svg class="logo" viewBox="0 0 232 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClearWater Ireland"><defs><linearGradient id="lgd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1aa6a8"/><stop offset="1" stop-color="#007A7C"/></linearGradient></defs><path d="M22 5 C22 5 35 20 35 30 a13 13 0 0 1-26 0 C9 20 22 5 22 5 Z" fill="url(#lgd)"/><path d="M17 30 a8 8 0 0 0 8 7" fill="none" stroke="#bdeef0" stroke-width="2.4" stroke-linecap="round" opacity=".9"/><text x="48" y="27" font-family="Poppins,Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="-.3"><tspan fill="#003366">Clear</tspan><tspan fill="#007A7C">Water</tspan></text><text x="49" y="40" font-family="Poppins,Inter,Arial,sans-serif" font-size="8.5" font-weight="600" letter-spacing="4.2" fill="#5a6b7b">IRELAND</text></svg>
     <p>Soft water. Sorted.<br>Water softener supply &amp; installation across Dublin and surrounding areas.</p>
     <p style="margin-top:12px"><a href="tel:017267941" style="color:var(--teal-x);font-weight:600">(1) 726 7941</a></p>
    </div>
@@ -777,16 +780,33 @@ try{(function(){
  calc();
 })();}catch(e){}
 
-/* quote form -> mailto */
+/* quote form -> Supabase edge function (saves lead + emails) */
 try{(function(){
+ var LEAD_ENDPOINT='https://jkevaiflwnodrhkdvtmm.supabase.co/functions/v1/submit-lead';
  var btn=document.getElementById('qSend');if(!btn)return;
+ var msg=document.getElementById('qMsg');
+ function show(text,ok){if(!msg)return;msg.style.display='block';msg.textContent=text;
+  msg.style.background=ok?'rgba(0,122,124,.08)':'rgba(192,57,43,.08)';
+  msg.style.color=ok?'#007A7C':'#c0392b';
+  msg.style.border='1px solid '+(ok?'rgba(0,122,124,.3)':'rgba(192,57,43,.3)');}
  btn.addEventListener('click',function(){
-  var name=document.getElementById('qName').value||'(no name)';
-  var contact=document.getElementById('qContact').value||'(no contact given)';
+  var name=(document.getElementById('qName').value||'').trim();
+  var email=(document.getElementById('qEmail').value||'').trim();
+  var phone=(document.getElementById('qPhone').value||'').trim();
+  var company=(document.getElementById('qCompany')||{}).value||'';
   var pkg=document.getElementById('qPkg').value, when=document.getElementById('qWhen').value;
-  var subject=encodeURIComponent('Website quote request — '+name);
-  var body=encodeURIComponent('Name: '+name+'\nContact: '+contact+'\nPackage: '+pkg+'\nTimeframe: '+when+'\n\nSent from clearwaterireland.ie');
-  window.location.href='mailto:clearwaterireland@gmail.com?subject='+subject+'&body='+body;
+  if(!name||(!email&&!phone)){show('Please add your name and an email or phone so we can reach you.',false);return;}
+  btn.disabled=true;var old=btn.textContent;btn.textContent='Sending…';
+  fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({name:name,email:email,phone:phone,company:company,package:pkg,timeframe:when})})
+  .then(function(r){return r.json().catch(function(){return {ok:r.ok};});})
+  .then(function(d){
+    if(d&&d.ok){show("Thanks "+name+" — we've got your enquiry and we'll be in touch shortly. Check your email for confirmation.",true);
+     ['qName','qEmail','qPhone'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+     btn.textContent='Sent ✓';}
+    else{show('Something went wrong sending that. Please call or text (1) 726 7941 and we’ll sort it.',false);btn.disabled=false;btn.textContent=old;}
+  })
+  .catch(function(){show('Couldn’t send right now. Please call or text (1) 726 7941.',false);btn.disabled=false;btn.textContent=old;});
  });
 })();}catch(e){}
 
