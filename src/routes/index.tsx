@@ -613,6 +613,9 @@ function Footer() {
 
       <div style={{ maxWidth: 1200, margin: "48px auto 0", padding: "24px 0", borderTop: "1px solid rgba(255,255,255,0.07)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
         <div style={{ color: "rgba(255,255,255,0.28)", fontSize: 13 }}>© 2026 ClearWaterIreland. All rights reserved.</div>
+        <div style={{ color: "rgba(255,255,255,0.28)", fontSize: 13 }}>
+          Powered by <a href="https://automateiq.ie" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.28)" }}>AutomateIQ</a>
+        </div>
         <div style={{ color: "rgba(255,255,255,0.28)", fontSize: 13 }}>Governed by the laws of Ireland.</div>
       </div>
 
