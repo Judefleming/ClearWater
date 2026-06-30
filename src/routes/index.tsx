@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import logo from "@/assets/clearwater-logo.png";
 import beforeImg from "@/assets/before-limescale.jpg";
@@ -732,7 +732,7 @@ function Index() {
           <p style={{ color: "var(--text-dark)", fontSize: 17, maxWidth: 520, margin: "18px auto 32px", lineHeight: 1.6 }}>
             Log in to your customer portal to view your documents, check your warranty, request a salt top-up, and chat with our assistant.
           </p>
-          <a href="/portal" className="btn btn-cta" style={{ padding: "14px 28px" }}>Go to Customer Portal →</a>
+          <Link to="/portal" className="btn btn-cta" style={{ padding: "14px 28px" }}>Go to Customer Portal →</Link>
           <div style={{ marginTop: 20, color: "rgba(197,216,234,0.75)", fontSize: 14 }}>
             New customer? Call <a href="tel:017267941" style={{ color: "var(--sky)", fontWeight: 600 }}>(1) 726 7941</a> for a free quote.
           </div>

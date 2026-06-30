@@ -10,18 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as InstallerRouteImport } from './routes/installer'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PortalIndexRouteImport } from './routes/portal.index'
+import { Route as InstallerIndexRouteImport } from './routes/installer.index'
 import { Route as PortalWarrantyRouteImport } from './routes/portal.warranty'
 import { Route as PortalSaltRouteImport } from './routes/portal.salt'
 import { Route as PortalLoginRouteImport } from './routes/portal.login'
 import { Route as PortalDocumentsRouteImport } from './routes/portal.documents'
 import { Route as PortalChatRouteImport } from './routes/portal.chat'
+import { Route as InstallerLoginRouteImport } from './routes/installer.login'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as InstallerJobInstallationIdRouteImport } from './routes/installer.job.$installationId'
 
 const PortalRoute = PortalRouteImport.update({
   id: '/portal',
   path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstallerRoute = InstallerRouteImport.update({
+  id: '/installer',
+  path: '/installer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -33,6 +42,11 @@ const PortalIndexRoute = PortalIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PortalRoute,
+} as any)
+const InstallerIndexRoute = InstallerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => InstallerRoute,
 } as any)
 const PortalWarrantyRoute = PortalWarrantyRouteImport.update({
   id: '/warranty',
@@ -59,82 +73,116 @@ const PortalChatRoute = PortalChatRouteImport.update({
   path: '/chat',
   getParentRoute: () => PortalRoute,
 } as any)
+const InstallerLoginRoute = InstallerLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => InstallerRoute,
+} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InstallerJobInstallationIdRoute =
+  InstallerJobInstallationIdRouteImport.update({
+    id: '/job/$installationId',
+    path: '/job/$installationId',
+    getParentRoute: () => InstallerRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/installer': typeof InstallerRouteWithChildren
   '/portal': typeof PortalRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/installer/login': typeof InstallerLoginRoute
   '/portal/chat': typeof PortalChatRoute
   '/portal/documents': typeof PortalDocumentsRoute
   '/portal/login': typeof PortalLoginRoute
   '/portal/salt': typeof PortalSaltRoute
   '/portal/warranty': typeof PortalWarrantyRoute
+  '/installer/': typeof InstallerIndexRoute
   '/portal/': typeof PortalIndexRoute
+  '/installer/job/$installationId': typeof InstallerJobInstallationIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/chat': typeof ApiChatRoute
+  '/installer/login': typeof InstallerLoginRoute
   '/portal/chat': typeof PortalChatRoute
   '/portal/documents': typeof PortalDocumentsRoute
   '/portal/login': typeof PortalLoginRoute
   '/portal/salt': typeof PortalSaltRoute
   '/portal/warranty': typeof PortalWarrantyRoute
+  '/installer': typeof InstallerIndexRoute
   '/portal': typeof PortalIndexRoute
+  '/installer/job/$installationId': typeof InstallerJobInstallationIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/installer': typeof InstallerRouteWithChildren
   '/portal': typeof PortalRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/installer/login': typeof InstallerLoginRoute
   '/portal/chat': typeof PortalChatRoute
   '/portal/documents': typeof PortalDocumentsRoute
   '/portal/login': typeof PortalLoginRoute
   '/portal/salt': typeof PortalSaltRoute
   '/portal/warranty': typeof PortalWarrantyRoute
+  '/installer/': typeof InstallerIndexRoute
   '/portal/': typeof PortalIndexRoute
+  '/installer/job/$installationId': typeof InstallerJobInstallationIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/installer'
     | '/portal'
     | '/api/chat'
+    | '/installer/login'
     | '/portal/chat'
     | '/portal/documents'
     | '/portal/login'
     | '/portal/salt'
     | '/portal/warranty'
+    | '/installer/'
     | '/portal/'
+    | '/installer/job/$installationId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/api/chat'
+    | '/installer/login'
     | '/portal/chat'
     | '/portal/documents'
     | '/portal/login'
     | '/portal/salt'
     | '/portal/warranty'
+    | '/installer'
     | '/portal'
+    | '/installer/job/$installationId'
   id:
     | '__root__'
     | '/'
+    | '/installer'
     | '/portal'
     | '/api/chat'
+    | '/installer/login'
     | '/portal/chat'
     | '/portal/documents'
     | '/portal/login'
     | '/portal/salt'
     | '/portal/warranty'
+    | '/installer/'
     | '/portal/'
+    | '/installer/job/$installationId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InstallerRoute: typeof InstallerRouteWithChildren
   PortalRoute: typeof PortalRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
 }
@@ -146,6 +194,13 @@ declare module '@tanstack/react-router' {
       path: '/portal'
       fullPath: '/portal'
       preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/installer': {
+      id: '/installer'
+      path: '/installer'
+      fullPath: '/installer'
+      preLoaderRoute: typeof InstallerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -161,6 +216,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/portal/'
       preLoaderRoute: typeof PortalIndexRouteImport
       parentRoute: typeof PortalRoute
+    }
+    '/installer/': {
+      id: '/installer/'
+      path: '/'
+      fullPath: '/installer/'
+      preLoaderRoute: typeof InstallerIndexRouteImport
+      parentRoute: typeof InstallerRoute
     }
     '/portal/warranty': {
       id: '/portal/warranty'
@@ -197,6 +259,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalChatRouteImport
       parentRoute: typeof PortalRoute
     }
+    '/installer/login': {
+      id: '/installer/login'
+      path: '/login'
+      fullPath: '/installer/login'
+      preLoaderRoute: typeof InstallerLoginRouteImport
+      parentRoute: typeof InstallerRoute
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -204,8 +273,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/installer/job/$installationId': {
+      id: '/installer/job/$installationId'
+      path: '/job/$installationId'
+      fullPath: '/installer/job/$installationId'
+      preLoaderRoute: typeof InstallerJobInstallationIdRouteImport
+      parentRoute: typeof InstallerRoute
+    }
   }
 }
+
+interface InstallerRouteChildren {
+  InstallerLoginRoute: typeof InstallerLoginRoute
+  InstallerIndexRoute: typeof InstallerIndexRoute
+  InstallerJobInstallationIdRoute: typeof InstallerJobInstallationIdRoute
+}
+
+const InstallerRouteChildren: InstallerRouteChildren = {
+  InstallerLoginRoute: InstallerLoginRoute,
+  InstallerIndexRoute: InstallerIndexRoute,
+  InstallerJobInstallationIdRoute: InstallerJobInstallationIdRoute,
+}
+
+const InstallerRouteWithChildren = InstallerRoute._addFileChildren(
+  InstallerRouteChildren,
+)
 
 interface PortalRouteChildren {
   PortalChatRoute: typeof PortalChatRoute
@@ -230,9 +322,20 @@ const PortalRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InstallerRoute: InstallerRouteWithChildren,
   PortalRoute: PortalRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

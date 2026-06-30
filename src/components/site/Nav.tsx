@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import logo from "@/assets/clearwater-logo.png";
 
 const links = [
@@ -73,7 +74,7 @@ export default function Nav() {
               (1) 726 7941
             </a>
             <a href="/#chatbot" onClick={(e) => { if (window.location.pathname === "/") { e.preventDefault(); onLinkClick("chatbot"); } }} style={{ color: "var(--navy-dark)", fontSize: 14, fontWeight: 600 }}>AI Assistant</a>
-            <a href="/portal" style={{ color: "var(--navy-dark)", fontSize: 14, fontWeight: 600, padding: "9px 16px", border: "1.5px solid var(--navy-dark)", borderRadius: 8, transition: "all 200ms" }}>Customer Portal</a>
+            <Link to="/portal" style={{ color: "var(--navy-dark)", fontSize: 14, fontWeight: 600, padding: "9px 16px", border: "1.5px solid var(--navy-dark)", borderRadius: 8, transition: "all 200ms" }}>Customer Portal</Link>
             <a href="#contact" onClick={(e) => { e.preventDefault(); onLinkClick("contact"); }} className="btn btn-cta" style={{ padding: "10px 20px", fontSize: 14 }}>Get a Quote</a>
           </div>
 
@@ -89,7 +90,7 @@ export default function Nav() {
             {links.map((l) => (
               <a key={l.id} href={`#${l.id}`} onClick={(e) => { e.preventDefault(); onLinkClick(l.id); }} className="font-display" style={{ color: "#fff", fontSize: 36, fontWeight: 700 }}>{l.label}</a>
             ))}
-            <a href="/portal" className="font-display" style={{ color: "var(--sky)", fontSize: 36, fontWeight: 700 }}>Customer Portal</a>
+            <Link to="/portal" className="font-display" style={{ color: "var(--sky)", fontSize: 36, fontWeight: 700 }} onClick={() => setOpen(false)}>Customer Portal</Link>
             <a href="/#chatbot" onClick={(e) => { if (window.location.pathname === "/") { e.preventDefault(); onLinkClick("chatbot"); } }} className="font-display" style={{ color: "var(--sky)", fontSize: 36, fontWeight: 700 }}>AI Assistant</a>
           </div>
           <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 12 }}>
